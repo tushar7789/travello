@@ -1,7 +1,8 @@
 .content-container {
-    border : 1px solid red;
+    /* border : 1px solid red; */
     height : 60vh;
     display: flex;
     align-items: center;
     justify-content: center;
+    background-color: #e76551;
 }

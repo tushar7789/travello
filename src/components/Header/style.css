@@ -1,7 +1,21 @@
 .header-container {
-    border : 1px solid red;
+    /* border : 1px solid red; */
     height : 20vh;
     display: flex;
-    align-items: center;
-    justify-content: center;
+    align-items:last baseline;
+    justify-content:center;
+    background-image: url('/images/header-bg-image.jpg');
+}
+
+.first-container {
+    font-size : 20px;
+    /* border: 1px solid tan; */
+    height: 55%;
+    /* font-style: italic; */
+}
+
+.second-container {
+    font-size : 40px;
+    /* border: 1px solid tan; */
+    font-style: italic;
 }
