@@ -3,6 +3,16 @@
     height : 10vh;
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: end;
     background-color: yellowgreen;
+}
+
+.sb-select-container {
+    /* border: 1px solid red; */
+    margin-right: 30px;
+}
+
+.sb-input-container {
+    /* border: 1px solid red; */
+    margin-right: 100px;
 }
