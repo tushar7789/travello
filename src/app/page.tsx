@@ -1,16 +1,12 @@
-import Image from "next/image";
-import Header from "@/components/Header";
-import SearchBar from "@/components/SearchBar";
-import Content from "@/components/Content";
-import Footer from "@/components/Footer";
+'use client'
 
-export default function Home() {
+import Home from "@/components/Home";
+
+export default function Page() {
+
   return (
     <div>
-      <Header />
-      <SearchBar />
-      <Content />
-      <Footer />
+      <Home />
     </div>
   );
 }

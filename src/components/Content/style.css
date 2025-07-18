@@ -28,3 +28,12 @@
     justify-content: start;
     align-items: center;
 }
+
+.checked-item {
+    margin-left: 10px;
+    text-decoration: line-through;
+}
+
+.unchecked-item {
+    margin-left: 10px;
+}

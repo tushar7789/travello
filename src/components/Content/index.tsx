@@ -1,23 +1,13 @@
 import React from 'react'
 import './style.css'
 
-let itemList = [
-    {
-        "item": "sock",
-        "amount": 3,
-        "checked": false
-    },
-    {
-        "item": "shirt",
-        "amount": 5,
-        "checked": false
-    }
-]
+import { itemInterface, searchBarPropInterface } from "@/interfaces/props";
+import AddItemComp from './AddItemComp';
 
 const itemCapacityPerBox = 4;
 
-const Content = () => {
-    const nOfBox = Math.round(itemList.length / itemCapacityPerBox);
+const Content: React.FC<searchBarPropInterface> = ({ itemList, setItemList }) => {
+    const nOfBox = Math.round(itemList.length / itemCapacityPerBox) + 1;
     const itemsOnLastBox = itemList.length % itemCapacityPerBox;
 
     return (
@@ -27,19 +17,10 @@ const Content = () => {
                     <div className='c-box-container' key={index}>
                         {
                             itemList
-                                .slice(index * 4, index * 4 + ((index + 1 === nOfBox) ? itemsOnLastBox : itemCapacityPerBox))
-                                .map((ele: any, ind: any) => (
-                                    <div className='c-item-container'>
-                                        <input type='checkbox' />
-                                        <span
-                                            style={{
-                                                marginLeft: '10px'
-                                            }}
-                                        >
-                                            {ele['item']}
-                                            &nbsp;&nbsp;&nbsp;
-                                            <i>{ele['amount']}</i>
-                                        </span>
+                                .slice(index * 4, index * 4 + ((index + 1 === nOfBox) ? (itemsOnLastBox !== 0 ? itemsOnLastBox : itemCapacityPerBox) : itemCapacityPerBox))
+                                .map((ele: itemInterface, ind: any) => (
+                                    <div className='c-item-container' key={ind}>
+                                        <AddItemComp ele={ele} itemList={itemList} setItemList={setItemList} />
                                     </div>
                                 ))
                         }
