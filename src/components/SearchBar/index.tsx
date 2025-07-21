@@ -11,14 +11,19 @@ const SearchBar: React.FC<searchBarPropInterface> = ({ itemList, setItemList }) 
 
     const handleSubmit = (e: any) => {
         e.preventDefault();
-        let temp = {
-            'item': inputVal,
-            'amount': itemCount,
-            'checked': false
+        if (inputVal.length != 0) {
+            let temp = {
+                'id': itemList.length,
+                'item': inputVal,
+                'amount': Number(itemCount),
+                'checked': false
+            }
+
+            setItemList((itemList) => [...itemList, temp]);
         }
-
-        setItemList((itemList) => [...itemList, temp]);
-
+        setInputVal('');
+        setItemCount(1);
+        // document.getElementById('itemCount')?.innerHTML = 1
     }
 
     const handleChange = (e: any) => {
@@ -32,7 +37,7 @@ const SearchBar: React.FC<searchBarPropInterface> = ({ itemList, setItemList }) 
     return (
         <div className='searchbar-container'>
             <div className='sb-select-container'>
-                <select name="itemCount" id="itemCount" onChange={handleSelectChange}>
+                <select name="itemCount" id="itemCount" value={itemCount} onChange={handleSelectChange}>
                     {
                         Array.from({ length: n }, (_, index) => index + 1).map((num) => (
                             <option value={num} key={num}>{num}</option>
@@ -50,6 +55,7 @@ const SearchBar: React.FC<searchBarPropInterface> = ({ itemList, setItemList }) 
                             width: '300px'
                         }}
                         onChange={handleChange}
+                        value={inputVal}
                     />
                     <input type='submit' value='Add item' />
                 </form>

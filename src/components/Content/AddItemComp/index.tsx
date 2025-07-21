@@ -1,17 +1,19 @@
 'use client'
 
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { addItemPropInterface } from '@/interfaces/props'
 import '../style.css'
 
 const AddItemComp: React.FC<addItemPropInterface> = ({ ele, itemList, setItemList }) => {
     const [isChecked, setIsChecked] = useState(false);
 
-    const handleCheckChange = (e: any) => {
+    const handleCheckChange = () => {
         setIsChecked(isChecked => !isChecked);
+    }
 
-        let newArray = itemList.map((e) => {
-            if (ele['id'] === e['id']) {
+    useEffect(() => {
+        setItemList(itemList => itemList.map((e) => {
+            if (ele['id'] !== e['id']) {
                 return e;
             } else {
                 return {
@@ -19,10 +21,8 @@ const AddItemComp: React.FC<addItemPropInterface> = ({ ele, itemList, setItemLis
                     'checked': isChecked
                 }
             }
-        });
-
-        setItemList(newArray);
-    }
+        }));
+    }, [isChecked]);
 
     return (
         <>

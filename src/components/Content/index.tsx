@@ -7,7 +7,7 @@ import AddItemComp from './AddItemComp';
 const itemCapacityPerBox = 4;
 
 const Content: React.FC<searchBarPropInterface> = ({ itemList, setItemList }) => {
-    const nOfBox = Math.round(itemList.length / itemCapacityPerBox) + 1;
+    const nOfBox = Math.floor(itemList.length / itemCapacityPerBox) + 1;
     const itemsOnLastBox = itemList.length % itemCapacityPerBox;
 
     return (
